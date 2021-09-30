@@ -7,6 +7,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormComponent } from './pages/form/form.component';
 import { TableComponent } from './pages/table/table.component';
 
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -16,6 +18,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',

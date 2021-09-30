@@ -3,11 +3,11 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-list>
+    <mat-list *ngIf="user">
       <mat-list-item>
          <mat-icon mat-list-icon>account_circle</mat-icon>
-         <h4 mat-line>Username</h4>
-         <p mat-line class="demo-2"> name@mail.com </p>
+         <h4 mat-line>{{ user.name }}</h4>
+         <p mat-line class="demo-2"> {{ user.email }} </p>
       </mat-list-item>
       <mat-divider></mat-divider>
    </mat-list>
@@ -25,7 +25,7 @@
         <mat-icon mat-list-icon>dns</mat-icon>
         Form
       </a>
-      <a mat-list-item>
+      <a mat-list-item (click)="logout()">
         <mat-icon mat-list-icon>logout</mat-icon>
         Logout
       </a>
